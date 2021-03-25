@@ -40,6 +40,7 @@ def make_gcode(fasad, freza):
   for depth in freza['глубина']:
     for point in points:  
       gcode += 'G01 X{} Y{} Z-{} F{} S{} \n'.format(point[0], point[1], depth, freza['подача'], freza['шпиндель'])
+  #G00 X0.0000 Y0.0000
   gcode += 'G00 Z{} \n'.format(DEFAULT_Z)
   gcode += 'M05 M30 \n'
   return gcode

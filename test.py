@@ -58,7 +58,7 @@ def num_gcode(gcode):
 def make_nc_file(fasad, freza):
   gcode = make_gcode(fasad, freza)
   gcode = num_gcode(gcode)
-  gcode = "' " + freza['описание'] + '\n' + gcode
+  #gcode = "' " + freza['описание'] + '\n' + gcode
   filename = "{0}x{1}_{2}.nc".format(fasad[0], fasad[1], freza['имя'])
   print(filename)
   print(gcode)

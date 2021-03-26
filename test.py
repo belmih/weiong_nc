@@ -25,10 +25,11 @@ def get_points(fl, fw, fm):
   return points
   
 def make_gcode(fasad, freza):
-  DEFAULT_Z = 10.000
+  DEFAULT_Z = 16.000
   PREPARE_Z = 1.000
   PAUSE1 = 4000
-  
+  PAUSE2 = 10000  
+
   flength = fasad[0]
   fwidth = fasad[1]
   fmargin = freza['отступ']
@@ -43,7 +44,8 @@ def make_gcode(fasad, freza):
   gcode += 'G00 Z{} \n'.format(DEFAULT_Z)
   gcode += 'M05 \n'
   gcode += 'G00 X0.0000 Y0.0000 \n'
-  gcode += 'M30 \n'
+  gcode += 'G04 P{} \n'.format(PAUSE2)
+  gcode += 'M02 \n'
   return gcode
   
 def num_gcode(gcode):

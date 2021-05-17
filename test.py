@@ -61,11 +61,10 @@ def num_gcode(gcode):
 def make_nc_file(foldername, fasad, freza):
   gcode = make_gcode(fasad, freza)
   gcode = num_gcode(gcode)
-  #gcode = "' " + freza['описание'] + '\n' + gcode
-  #newpath = r'C:\Program Files\arbitrary' 
+ 
   if not os.path.exists(foldername):
     os.makedirs(foldername)
-  filename = foldername + "\\" + "{0}x{1}_{2}.nc".format(fasad[0], fasad[1], freza['имя'])
+  filename = foldername + "/" + "{0}x{1}_{2}.nc".format(fasad[0], fasad[1], freza['имя'])
   print(filename)
   print(gcode)
   f = open(filename, 'w')
@@ -74,7 +73,7 @@ def make_nc_file(foldername, fasad, freza):
 
 def make_gcode_file(data):
   for freza in data['фрезы']:
-    foldername = "{}\\{}".format(data['папка'], freza['отступ'])
+    foldername = "{}/{}".format(data['папка'], freza['отступ'])
     for fasad in data['фасады']:
       make_nc_file(foldername, fasad, freza)
  

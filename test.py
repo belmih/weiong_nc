@@ -1,6 +1,9 @@
 import json
 import os
 
+
+# версия от 9.10.2022 
+
 def read_json():
   with open('data.json', encoding='utf-8') as read_file:
     data = json.load(read_file)
@@ -13,9 +16,13 @@ def g_line(n, line):
 def get_points(fl, fw, fm):
   # --> crutch :)
   fm2 = fm  
-  if fw == 140:
+  if fw >= 140 and fw <= 160:
     if fm == 61 : fm2 = 35
     if fm == 70 : fm2 = 44
+  if fw > 160 and fw < 180:
+    if fm == 61 : fm2 = 45
+    if fm == 70 : fm2 = 54
+
   # <--  
   points = []
   points.append((fm2, fm))
